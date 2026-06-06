@@ -1,0 +1,1194 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio học tập cá nhân của Trần Quốc Bảo Anh - Sinh viên ngành công nghệ kĩ thuật điện tử viễn thông tại trường Đại học Công nghệ - ĐHQGHN.">
+    <title>Trần Quốc Bảo Anh | Personal Portfolio</title>
+    <style>
+        /* ==========================================================================
+           DESIGN SYSTEM & COLOR PALETTE (LIGHT PASTEL THEME)
+           ========================================================================== */
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
+        :root {
+            --bg-dark: #f6f8fc;
+            --card-bg: rgba(255, 255, 255, 0.75);
+            --card-sub-bg: rgba(241, 245, 249, 0.7);
+            --card-border: rgba(226, 232, 240, 0.8);
+            
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --text-muted: #94a3b8;
+            
+            --accent-purple: #6366f1; /* Indigo */
+            --accent-purple-light: #818cf8;
+            --purple-gradient: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+            
+            --font-primary: 'Plus Jakarta Sans', sans-serif;
+            --transition-smooth: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            --border-radius-lg: 20px;
+            --border-radius-md: 14px;
+            --border-radius-sm: 8px;
+        }
+
+        /* ==========================================================================
+           BASE STYLES & PASTEL MESH BACKGROUND
+           ========================================================================== */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-primary);
+            background-color: var(--bg-dark);
+            /* Soft Pastel Mesh + Faint Dust Pattern Background */
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(224, 231, 255, 0.65) 0%, transparent 45%),
+                radial-gradient(circle at 90% 10%, rgba(250, 232, 255, 0.65) 0%, transparent 45%),
+                radial-gradient(circle at 50% 80%, rgba(224, 242, 254, 0.55) 0%, transparent 45%),
+                radial-gradient(1px 1px at 12% 18%, rgba(15, 23, 42, 0.08) 100%, transparent),
+                radial-gradient(1.5px 1.5px at 28% 45%, rgba(15, 23, 42, 0.06) 100%, transparent),
+                radial-gradient(1px 1px at 55% 12%, rgba(15, 23, 42, 0.09) 100%, transparent),
+                radial-gradient(2px 2px at 73% 58%, rgba(15, 23, 42, 0.05) 100%, transparent),
+                radial-gradient(1px 1px at 88% 82%, rgba(15, 23, 42, 0.1) 100%, transparent);
+            background-size: 100% 100%, 100% 100%, 100% 100%, 180px 180px, 320px 320px, 160px 160px, 240px 240px, 420px 420px;
+            background-repeat: repeat;
+            color: var(--text-primary);
+            min-height: 100vh;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+            transition: var(--transition-smooth);
+        }
+
+        /* ==========================================================================
+           NAVIGATION HEADER
+           ========================================================================== */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 100;
+            padding: 1.25rem 4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(248, 250, 252, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            letter-spacing: -0.5px;
+        }
+        
+        .logo span {
+            color: var(--accent-purple);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.25rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            position: relative;
+            padding: 0.4rem 0;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-primary);
+        }
+
+        /* Active highlight tab bar */
+        .nav-links a.active {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 100%;
+            height: 2.5px;
+            background: var(--accent-purple);
+            border-radius: 2px;
+        }
+
+        /* ==========================================================================
+           MAIN LAYOUT CONTROLLERS
+           ========================================================================== */
+        main {
+            max-width: 1100px;
+            margin: 7.5rem auto 5rem auto;
+            padding: 0 1.5rem;
+        }
+
+        section {
+            margin-bottom: 6rem;
+            scroll-margin-top: 9.5rem;
+        }
+
+        .section-title {
+            font-size: 2.1rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+
+        .section-title span {
+            background: var(--purple-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section-subtitle {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .card-main {
+            background-color: var(--card-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--card-border);
+            border-radius: var(--border-radius-lg);
+            padding: 2.75rem;
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.04), 0 1px 3px rgba(0, 0, 0, 0.01);
+        }
+
+        /* ==========================================================================
+           SECTION 1: GIỚI THIỆU (ABOUT ME)
+           ========================================================================== */
+        .intro-container {
+            display: grid;
+            grid-template-columns: 240px 1fr;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .avatar-column {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .avatar-circle {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent-purple) 0%, var(--accent-purple-light) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3.75rem;
+            font-weight: 700;
+            color: #ffffff;
+            letter-spacing: -1px;
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.25);
+            border: 4px solid #ffffff;
+            user-select: none;
+        }
+
+        .intro-details h1 {
+            font-size: 2.1rem;
+            font-weight: 800;
+            margin-bottom: 0.75rem;
+            letter-spacing: -0.5px;
+            color: var(--text-primary);
+        }
+
+        .intro-details h1 span {
+            background: var(--purple-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .academic-info {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin-bottom: 1.75rem;
+        }
+
+        .academic-line {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .academic-line svg {
+            width: 16px;
+            height: 16px;
+            color: var(--accent-purple);
+            flex-shrink: 0;
+        }
+
+        /* Sub-cards inside Profile card */
+        .sub-cards-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.25rem;
+        }
+
+        .sub-card {
+            background-color: var(--card-sub-bg);
+            border: 1px solid var(--card-border);
+            border-radius: var(--border-radius-md);
+            padding: 1.25rem 1.5rem;
+            transition: var(--transition-smooth);
+        }
+
+        .sub-card:hover {
+            border-color: var(--accent-purple-light);
+            transform: translateY(-2px);
+        }
+
+        .sub-card-header {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .sub-card-header svg {
+            width: 16px;
+            height: 16px;
+            color: var(--accent-purple);
+        }
+
+        .sub-card-header h3 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .sub-card p {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .card-full-width {
+            grid-column: span 2;
+        }
+
+        /* ==========================================================================
+           SECTION 2: DỰ ÁN HỌC TẬP (PROJECTS 3x2)
+           ========================================================================== */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .project-card {
+            background-color: var(--card-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--card-border);
+            border-radius: var(--border-radius-lg);
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            transition: var(--transition-smooth);
+            min-height: 360px;
+            box-shadow: 0 8px 30px rgba(99, 102, 241, 0.03);
+        }
+
+        .project-card:hover {
+            border-color: var(--accent-purple-light);
+            transform: translateY(-5px);
+            box-shadow: 0 12px 35px rgba(99, 102, 241, 0.08);
+        }
+
+        .project-icon-badge {
+            width: 38px;
+            height: 38px;
+            border-radius: 8px;
+            background-color: rgba(99, 102, 241, 0.06);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.25rem;
+            border: 1px solid rgba(99, 102, 241, 0.12);
+        }
+
+        .project-icon-badge svg {
+            width: 18px;
+            height: 18px;
+            color: var(--accent-purple);
+        }
+
+        .project-card h3 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-bottom: 0.85rem;
+            color: var(--text-primary);
+            line-height: 1.4;
+        }
+
+        .project-detail-item {
+            font-size: 0.85rem;
+            line-height: 1.5;
+            margin-bottom: 0.65rem;
+            color: var(--text-secondary);
+        }
+
+        .project-detail-item strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        /* File Manager Panel inside card */
+        .file-manager {
+            margin-top: auto;
+            padding-top: 0.85rem;
+            border-top: 1px dashed rgba(226, 232, 240, 0.9);
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .file-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.35rem;
+            min-height: 24px;
+            align-items: center;
+        }
+
+        .no-files {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            font-style: italic;
+        }
+
+        .file-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            background: rgba(99, 102, 241, 0.06);
+            border: 1px solid rgba(99, 102, 241, 0.12);
+            color: var(--accent-purple);
+            font-size: 0.72rem;
+            font-weight: 600;
+            padding: 0.15rem 0.45rem;
+            border-radius: 6px;
+            transition: var(--transition-smooth);
+        }
+
+        .file-tag-name {
+            cursor: pointer;
+            max-width: 120px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .file-tag-name:hover {
+            text-decoration: underline;
+        }
+
+        .file-tag-delete {
+            cursor: pointer;
+            color: #ef4444;
+            font-weight: 700;
+            font-size: 0.8rem;
+            padding-left: 2px;
+            transition: var(--transition-smooth);
+        }
+
+        .file-tag-delete:hover {
+            color: #b91c1c;
+        }
+
+        .file-actions {
+            display: flex;
+            justify-content: flex-start;
+        }
+
+        .btn-attach {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            background: #f1f5f9;
+            border: 1px solid #e2e8f0;
+            color: var(--text-secondary);
+            padding: 0.3rem 0.65rem;
+            border-radius: var(--border-radius-sm);
+            font-size: 0.72rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+
+        .btn-attach:hover {
+            background: rgba(99, 102, 241, 0.08);
+            color: var(--accent-purple);
+            border-color: rgba(99, 102, 241, 0.15);
+        }
+
+        .btn-attach svg {
+            width: 12px;
+            height: 12px;
+        }
+
+        /* Report actions styling */
+        .project-link-container {
+            padding-top: 0.75rem;
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+        
+        .project-link::after {
+            content: ' (Chưa có tệp)';
+            font-size: 0.72rem;
+            font-weight: 500;
+            color: var(--text-muted);
+        }
+
+        .project-link.has-report {
+            color: var(--accent-purple);
+        }
+        
+        .project-link.has-report::after {
+            content: ' 📄';
+            font-size: 0.8rem;
+        }
+
+        .project-link:hover {
+            color: var(--text-primary);
+        }
+
+        .project-link svg {
+            width: 14px;
+            height: 14px;
+        }
+
+        /* ==========================================================================
+           SECTION 3: TỔNG KẾT HÀNH TRÌNH (CONCLUSION)
+           ========================================================================== */
+        .summary-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            align-items: start;
+        }
+
+        .summary-card {
+            background-color: var(--card-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--card-border);
+            border-radius: var(--border-radius-lg);
+            padding: 2.25rem;
+            transition: var(--transition-smooth);
+            box-shadow: 0 8px 30px rgba(99, 102, 241, 0.03);
+        }
+
+        .summary-card:hover {
+            border-color: var(--accent-purple-light);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 35px rgba(99, 102, 241, 0.06);
+        }
+
+        .summary-icon-circle {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background-color: rgba(99, 102, 241, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.25rem;
+            border: 1px solid rgba(99, 102, 241, 0.15);
+        }
+
+        .summary-icon-circle svg {
+            width: 20px;
+            height: 20px;
+            color: var(--accent-purple);
+        }
+
+        .summary-card h3 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 0.85rem;
+            color: var(--text-primary);
+        }
+
+        .summary-card p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .summary-card p strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        /* ==========================================================================
+           FOOTER
+           ========================================================================== */
+        footer {
+            border-top: 1px solid rgba(226, 232, 240, 0.8);
+            background-color: #f8fafc;
+            padding: 2rem 4rem;
+            text-align: center;
+        }
+
+        footer p {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        /* ==========================================================================
+           RESPONSIVE STYLES (TABLETS & MOBILE DEVICES)
+           ========================================================================== */
+        @media (max-width: 1024px) {
+            .projects-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 860px) {
+            header {
+                padding: 1.25rem 2rem;
+            }
+            .intro-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                text-align: center;
+            }
+            .avatar-column {
+                order: -1;
+            }
+            .academic-info {
+                align-items: center;
+            }
+            .sub-cards-grid {
+                text-align: left;
+            }
+            .summary-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+            header {
+                flex-direction: column;
+                gap: 0.75rem;
+                padding: 1rem;
+            }
+            .nav-links {
+                gap: 1.25rem;
+            }
+            main {
+                margin-top: 9.5rem;
+            }
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            .sub-cards-grid {
+                grid-template-columns: 1fr;
+            }
+            .card-full-width {
+                grid-column: span 1;
+            }
+            .card-main {
+                padding: 1.5rem;
+            }
+            .summary-card {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAV HEADER -->
+    <header>
+        <a href="#" class="logo">Portfolio<span>.</span></a>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#gioi-thieu" class="active" id="nav-gioi-thieu">Giới thiệu</a></li>
+                <li><a href="#du-an" id="nav-du-an">Dự án</a></li>
+                <li><a href="#tong-ket" id="nav-tong-ket">Tổng kết</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- MAIN WRAPPER -->
+    <main>
+        
+        <!-- SECTION 1: GIỚI THIỆU -->
+        <section id="gioi-thieu">
+            <div class="card-main">
+                <div class="intro-container">
+                    
+                    <!-- Left: Avatar Circle -->
+                    <div class="avatar-column" style="display: flex; justify-content: center; align-items: center;">
+                        <div class="avatar-circle" style="width: 180px; height: 180px; border-radius: 50%; background: linear-gradient(135deg, var(--accent-purple) 0%, var(--accent-purple-light) 100%); display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 30px rgba(99, 102, 241, 0.2); border: 4px solid #ffffff; overflow: hidden;">
+                            <img src="zenitsu.png" alt="Zenitsu Khóc" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                        </div>
+                    </div>
+                    
+                    <!-- Right: Info details -->
+                    <div class="intro-details">
+                        <h1>Xin chào, mình là <span>Trần Quốc Bảo Anh</span></h1>
+                        
+                        <div class="academic-info">
+                            <div class="academic-line">
+                                <!-- Cap Icon (SVG) -->
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"></path></svg>
+                                <span>Sinh viên ngành công nghệ kĩ thuật điện tử viễn thông</span>
+                            </div>
+                            <div class="academic-line">
+                                <!-- University/School Icon (SVG) -->
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 21H2M19 21V10a2 2 0 0 0-2-2h-3V5a2 2 0 0 0-2-2h-3a2 2 0 0 0-2 2v3H6a2 2 0 0 0-2 2v11M10 21V12h4v9M17 12h.01M17 16h.01M7 12h.01M7 16h.01"></path></svg>
+                                <span> Trường Đại Học Công Nghệ - ĐHQGHN</span>
+                            </div>
+                        </div>
+
+                        <!-- Inside subcards -->
+                        <div class="sub-cards-grid">
+                            
+                            <!-- Card: Sở thích -->
+                            <div class="sub-card">
+                                <div class="sub-card-header">
+                                    <!-- Heart Icon -->
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                                    <h3>Sở thích</h3>
+                                </div>
+                                <p>Esports, Nghe nhạc, Xem phim, Thiết kế vi mạch, Thiết kế hệ thống</p>
+                            </div>
+
+                            <!-- Card: Kỹ năng -->
+                            <div class="sub-card">
+                                <div class="sub-card-header">
+                                    <!-- Code Icon -->
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                                    <h3>Kỹ năng</h3>
+                                </div>
+                                <p>Tư duy lập trình cơ bản, Khai thác AI tốt, Tư duy giải quyết vấn đề </p>
+                            </div>
+
+                            <!-- Card: Mục tiêu Portfolio (Full width) -->
+                            <div class="sub-card card-full-width">
+                                <div class="sub-card-header">
+                                    <!-- Ribbon/Bookmark Icon -->
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+                                    <h3>Mục tiêu Portfolio</h3>
+                                </div>
+                                <p>"Trong kỷ nguyên số, việc làm chủ các công cụ công nghệ và AI là chìa khóa để tối ưu hóa hiệu suất. Portfolio này là minh chứng thực tế cho quá trình chuyển đổi từ tư duy lý thuyết sang sản phẩm số hữu hình của bản thân. Mục tiêu của mình là xây dựng một không gian lưu trữ thông minh, tối ưu hóa quy trình quản lý tệp tin (Data Management), đồng thời khẳng định khả năng thích ứng nhanh nhạy với làn sóng công nghệ mới trong ngành học của mình."</p>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: DỰ ÁN HỌC TẬP -->
+        <section id="du-an">
+            <h2 class="section-title">Dự án <span>Học tập</span></h2>
+            <p class="section-subtitle">Các bài tập thực hành ứng dụng công cụ số và AI</p>
+            
+            <div class="projects-grid">
+                
+                <!-- Card 1 -->
+                <div class="project-card">
+                    <div class="project-icon-badge">
+                        <!-- Folder Icon -->
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+                    </div>
+                    <h3>Bài 1: Máy tính và thiết bị ngoại vi</h3>
+                    <div class="project-detail-item"><strong>Mục tiêu:</strong> Thao tác cơ bản với tệp tin và thư mục, trình bày cấu trúc thư mục tối ưu.</div>
+                    <div class="project-detail-item"><strong>Thực hiện:</strong> Thiết lập quy tắc đặt tên chuẩn, tổ chức lại dữ liệu cá nhân một cách khoa học, tiết kiệm thời gian tìm kiếm.</div>
+                    
+                    <!-- File Attachment UI -->
+                    <div class="file-manager">
+                        <div class="file-list" id="file-list-1">
+                            <span class="no-files">Chưa có tệp đính kèm</span>
+                        </div>
+                        <div class="file-actions">
+                            <button class="btn-attach" onclick="triggerFileInput(1)">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"></path></svg>
+                                Đính kèm Báo cáo
+                            </button>
+                            <input type="file" id="file-input-1" onchange="handleFileChange(1)" style="display: none;" multiple>
+                        </div>
+                    </div>
+
+                    <div class="project-link-container">
+                        <a href="javascript:void(0)" class="project-link" id="view-report-1" onclick="openReport(1)">
+                            Xem sản phẩm (Báo cáo)
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="project-card">
+                    <div class="project-icon-badge">
+                        <!-- Magnifier/Search Icon -->
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                    </div>
+                    <h3>Bài 2: Khai thác dữ liệu & thông tin</h3>
+                    <div class="project-detail-item"><strong>Mục tiêu:</strong> Tìm kiếm và đánh giá thông tin học thuật nâng cao.</div>
+                    <div class="project-detail-item"><strong>Thực hiện:</strong> Sử dụng toán tử tìm kiếm, đánh giá độ tin cậy của nguồn tin thông qua các tiêu chí chuyên ngành.</div>
+                    
+                    <!-- File Attachment UI -->
+                    <div class="file-manager">
+                        <div class="file-list" id="file-list-2">
+                            <span class="no-files">Chưa có tệp đính kèm</span>
+                        </div>
+                        <div class="file-actions">
+                            <button class="btn-attach" onclick="triggerFileInput(2)">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"></path></svg>
+                                Đính kèm Báo cáo
+                            </button>
+                            <input type="file" id="file-input-2" onchange="handleFileChange(2)" style="display: none;" multiple>
+                        </div>
+                    </div>
+
+                    <div class="project-link-container">
+                        <a href="javascript:void(0)" class="project-link" id="view-report-2" onclick="openReport(2)">
+                            Xem sản phẩm (Báo cáo)
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="project-card">
+                    <div class="project-icon-badge">
+                        <!-- CPU/Robot/AI Icon -->
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect><rect x="9" y="9" width="6" height="6"></rect><line x1="9" y1="1" x2="9" y2="4"></line><line x1="15" y1="1" x2="15" y2="4"></line><line x1="9" y1="20" x2="9" y2="23"></line><line x1="15" y1="20" x2="15" y2="23"></line><line x1="20" y1="9" x2="23" y2="9"></line><line x1="20" y1="15" x2="23" y2="15"></line><line x1="1" y1="9" x2="4" y2="9"></line><line x1="1" y1="15" x2="4" y2="15"></line></svg>
+                    </div>
+                    <h3>Bài 3: Tổng quan về Trí tuệ nhân tạo</h3>
+                    <div class="project-detail-item"><strong>Mục tiêu:</strong> Viết Prompt hiệu quả cho các tác vụ học tập.</div>
+                    <div class="project-detail-item"><strong>Thực hiện:</strong> So sánh kết quả giữa Prompt ban đầu và Prompt cải tiến để tối ưu hóa hiệu suất hỗ trợ từ AI.</div>
+                    
+                    <!-- File Attachment UI -->
+                    <div class="file-manager">
+                        <div class="file-list" id="file-list-3">
+                            <span class="no-files">Chưa có tệp đính kèm</span>
+                        </div>
+                        <div class="file-actions">
+                            <button class="btn-attach" onclick="triggerFileInput(3)">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"></path></svg>
+                                Đính kèm Báo cáo
+                            </button>
+                            <input type="file" id="file-input-3" onchange="handleFileChange(3)" style="display: none;" multiple>
+                        </div>
+                    </div>
+
+                    <div class="project-link-container">
+                        <a href="javascript:void(0)" class="project-link" id="view-report-3" onclick="openReport(3)">
+                            Xem sản phẩm (Báo cáo)
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="project-card">
+                    <div class="project-icon-badge">
+                        <!-- Collaboration/Users Icon -->
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                    </div>
+                    <h3>Bài 4: Giao tiếp & Hợp tác trực tuyến</h3>
+                    <div class="project-detail-item"><strong>Mục tiêu:</strong> Sử dụng công cụ hợp tác trực tuyến cho dự án nhóm.</div>
+                    <div class="project-detail-item"><strong>Thực hiện:</strong> Ứng dụng các nền tảng quản lý công việc để phân chia, theo dõi tiến độ và giao tiếp hiệu quả trong nhóm.</div>
+                    
+                    <!-- File Attachment UI -->
+                    <div class="file-manager">
+                        <div class="file-list" id="file-list-4">
+                            <span class="no-files">Chưa có tệp đính kèm</span>
+                        </div>
+                        <div class="file-actions">
+                            <button class="btn-attach" onclick="triggerFileInput(4)">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"></path></svg>
+                                Đính kèm Báo cáo
+                            </button>
+                            <input type="file" id="file-input-4" onchange="handleFileChange(4)" style="display: none;" multiple>
+                        </div>
+                    </div>
+
+                    <div class="project-link-container">
+                        <a href="javascript:void(0)" class="project-link" id="view-report-4" onclick="openReport(4)">
+                            Xem sản phẩm (Báo cáo)
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="project-card">
+                    <div class="project-icon-badge">
+                        <!-- Magic Sparkles Icon -->
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.3-6.3l-.7.7M6.7 17.3l-.7.7m12.6 0l-.7-.7M6.7 6.7l-.7-.7N12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4z"></path></svg>
+                    </div>
+                    <h3>Bài 5: Sáng tạo nội dung số</h3>
+                    <div class="project-detail-item"><strong>Mục tiêu:</strong> Sử dụng AI tạo sinh để hỗ trợ sáng tạo.</div>
+                    <div class="project-detail-item"><strong>Thực hiện:</strong> Tạo ra các sản phẩm nội dung hoàn thiện (hình ảnh/bài viết) kết hợp ý tưởng cá nhân và sức mạnh của AI.</div>
+                    
+                    <!-- File Attachment UI -->
+                    <div class="file-manager">
+                        <div class="file-list" id="file-list-5">
+                            <span class="no-files">Chưa có tệp đính kèm</span>
+                        </div>
+                        <div class="file-actions">
+                            <button class="btn-attach" onclick="triggerFileInput(5)">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"></path></svg>
+                                Đính kèm Báo cáo
+                            </button>
+                            <input type="file" id="file-input-5" onchange="handleFileChange(5)" style="display: none;" multiple>
+                        </div>
+                    </div>
+
+                    <div class="project-link-container">
+                        <a href="javascript:void(0)" class="project-link" id="view-report-5" onclick="openReport(5)">
+                            Xem sản phẩm (Báo cáo)
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Card 6 -->
+                <div class="project-card">
+                    <div class="project-icon-badge">
+                        <!-- Shield/Security Icon -->
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                    </div>
+                    <h3>Bài 6: An toàn & Liêm chính học thuật</h3>
+                    <div class="project-detail-item"><strong>Mục tiêu:</strong> Sử dụng AI có trách nhiệm trong học tập và nghiên cứu.</div>
+                    <div class="project-detail-item"><strong>Thực hiện:</strong> Trình bày bộ nguyên tắc cá nhân, tuân thủ đạo đức nghiên cứu khi trích dẫn và sử dụng công cụ hỗ trợ.</div>
+                    
+                    <!-- File Attachment UI -->
+                    <div class="file-manager">
+                        <div class="file-list" id="file-list-6">
+                            <span class="no-files">Chưa có tệp đính kèm</span>
+                        </div>
+                        <div class="file-actions">
+                            <button class="btn-attach" onclick="triggerFileInput(6)">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"></path></svg>
+                                Đính kèm Báo cáo
+                            </button>
+                            <input type="file" id="file-input-6" onchange="handleFileChange(6)" style="display: none;" multiple>
+                        </div>
+                    </div>
+
+                    <div class="project-link-container">
+                        <a href="javascript:void(0)" class="project-link" id="view-report-6" onclick="openReport(6)">
+                            Xem sản phẩm (Báo cáo)
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECTION 3: TỔNG KẾT HÀNH TRÌNH -->
+        <section id="tong-ket">
+            <h2 class="section-title">Tổng kết <span>Hành trình</span></h2>
+            <p class="section-subtitle">Nhìn lại chặng đường và bài học rút ra</p>
+            
+            <div class="summary-grid">
+                
+                <!-- Card 1: Kiến thức & Kỹ năng -->
+                <div class="summary-card">
+                    <div class="summary-icon-circle">
+                        <!-- Lightbulb Icon -->
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7z"></path></svg>
+                    </div>
+                    <h3>Kiến thức & Kỹ năng quan trọng</h3>
+                    <p>Portfolio này đã giúp mình định hình lại phương pháp học tập hoàn toàn mới: <strong>Cộng tác hiệu quả cùng Trí tuệ nhân tạo (AI-Human Collaboration)</strong>. Mình nhận ra giá trị cốt lõi không nằm ở việc để AI làm thay, mà nằm ở tư duy phản biện khi đánh giá dữ liệu và cách ứng dụng AI để hiện thực hóa ý tưởng cá nhân một cách nhanh nhất. Việc kết hợp giữa <strong>kỹ năng số hiện đại</strong> và <strong>sự liêm chính học thuật</strong> đã giúp mình xây dựng được một phương pháp tự nghiên cứu bền vững, không bị lạc hậu trước sự thay đổi liên tục của công nghệ.</p>
+                </div>
+
+                <!-- Card 2: Điểm tâm đắc nhất -->
+                <div class="summary-card">
+                    <div class="summary-icon-circle">
+                        <!-- Star Icon -->
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                    </div>
+                    <h3>Điểm tâm đắc nhất</h3>
+                    <p>Điểm tâm đắc nhất đối với mình là đã bước ra khỏi vùng an toàn để xây dựng một <strong>Hồ sơ năng lực số (Digital Portfolio)</strong> chuyên nghiệp. Thay vì lưu trữ bài tập một cách rời rạc, việc hệ thống hóa chúng giúp mình học được cách truyền tải câu chuyện học tập và năng lực cá nhân một cách thuyết phục. Đây chính là bước đi đầu tiên giúp mình <strong>định vị thương hiệu cá nhân trong kỷ nguyên số</strong>, minh chứng cho một tinh thần chủ động và sẵn sàng đón nhận các cơ hội nghề nghiệp tương lai.</p>
+                </div>
+
+                <!-- Card 3: Thách thức & Giải pháp -->
+                <div class="summary-card">
+                    <div class="summary-icon-circle">
+                        <!-- Puzzle / Gear Icon -->
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.1a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                    </div>
+                    <h3>Thách thức & Giải pháp</h3>
+                   <p>Thách thức lớn nhất đối với mình là làm sao hệ thống hóa khối lượng lớn dữ liệu bài tập và sơ đồ khối kỹ thuật phức tạp lên môi trường số mà không gây rối mắt. Mình đã tiếp cận bài toán này bằng <strong>tư duy tối ưu hóa băng thông và luồng dữ liệu (Data Flow Optimization)</strong>: tối giản hóa giao diện, phân cấp thông tin mạch lạc và tối ưu UI/UX. Giải pháp này giúp biến những báo cáo viễn thông khô khan thành một không gian số hiện đại, giúp người xem dễ dàng truy xuất thông tin chỉ với vài cú click chuột.</p>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2026 Trần Quốc Bảo Anh. Học phần Công nghệ số và AI - UET.</p>
+    </footer>
+
+    <!-- INTERACTIVE SCROLL NAVIGATION & INDEXEDDB MANAGEMENT -->
+    <script>
+        // IndexedDB variables
+        let db;
+        const DB_NAME = "PortfolioFilesDB";
+        const DB_VERSION = 1;
+        const STORE_NAME = "project_files";
+
+        // Initialize database and start rendering
+        document.addEventListener('DOMContentLoaded', () => {
+            initIndexedDB()
+                .then(() => {
+                    renderAllAttachedFiles();
+                })
+                .catch(err => {
+                    console.error("IndexedDB initialization failed:", err);
+                });
+
+            // Scroll spy nav logic
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-links a');
+
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if (pageYOffset >= (sectionTop - 250)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href').substring(1) === current) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+        });
+
+        /* ==========================================================================
+           INDEXEDDB UTILITIES
+           ========================================================================== */
+        function initIndexedDB() {
+            return new Promise((resolve, reject) => {
+                const request = indexedDB.open(DB_NAME, DB_VERSION);
+                
+                request.onupgradeneeded = (e) => {
+                    const dbInstance = e.target.result;
+                    if (!dbInstance.objectStoreNames.contains(STORE_NAME)) {
+                        dbInstance.createObjectStore(STORE_NAME, { keyPath: "key" });
+                    }
+                };
+                
+                request.onsuccess = (e) => {
+                    db = e.target.result;
+                    resolve(db);
+                };
+                
+                request.onerror = (e) => {
+                    reject(e.target.error);
+                };
+            });
+        }
+
+        async function getProjectFiles(projectId) {
+            return new Promise((resolve) => {
+                if (!db) {
+                    resolve([]);
+                    return;
+                }
+                const transaction = db.transaction(STORE_NAME, "readonly");
+                const store = transaction.objectStore(STORE_NAME);
+                const request = store.get(`project_${projectId}`);
+                
+                request.onsuccess = (e) => {
+                    const result = e.target.result;
+                    resolve(result ? result.files : []);
+                };
+                
+                request.onerror = () => {
+                    resolve([]);
+                };
+            });
+        }
+
+        async function saveProjectFiles(projectId, files) {
+            return new Promise((resolve, reject) => {
+                const transaction = db.transaction(STORE_NAME, "readwrite");
+                const store = transaction.objectStore(STORE_NAME);
+                const request = store.put({
+                    key: `project_${projectId}`,
+                    projectId: projectId,
+                    files: files
+                });
+                
+                request.onsuccess = () => resolve();
+                request.onerror = (e) => reject(e.target.error);
+            });
+        }
+
+        /* ==========================================================================
+           FILE ACTIONS HANDLERS
+           ========================================================================== */
+        function triggerFileInput(projectId) {
+            document.getElementById(`file-input-${projectId}`).click();
+        }
+
+        async function handleFileChange(projectId) {
+            const input = document.getElementById(`file-input-${projectId}`);
+            if (input.files.length === 0) return;
+            
+            for (let i = 0; i < input.files.length; i++) {
+                const file = input.files[i];
+                await addFileToProject(projectId, file);
+            }
+            input.value = ""; // Reset
+        }
+
+        async function addFileToProject(projectId, file) {
+            try {
+                const files = await getProjectFiles(projectId);
+                
+                if (files.some(f => f.name === file.name)) {
+                    alert(`Tệp "${file.name}" đã tồn tại trong dự án này!`);
+                    return;
+                }
+                
+                files.push({
+                    name: file.name,
+                    type: file.type,
+                    size: file.size,
+                    data: file // Store the raw File/Blob object directly
+                });
+                
+                await saveProjectFiles(projectId, files);
+                renderFiles(projectId, files);
+            } catch (err) {
+                console.error("Lỗi khi thêm file:", err);
+                alert("Đã xảy ra lỗi khi lưu tệp!");
+            }
+        }
+
+        async function deleteFileFromProject(projectId, fileName) {
+            try {
+                let files = await getProjectFiles(projectId);
+                files = files.filter(f => f.name !== fileName);
+                await saveProjectFiles(projectId, files);
+                renderFiles(projectId, files);
+            } catch (err) {
+                console.error("Lỗi khi xóa file:", err);
+                alert("Đã xảy ra lỗi khi xóa tệp!");
+            }
+        }
+
+        /* ==========================================================================
+           RENDER UI & OPEN FILES
+           ========================================================================== */
+        function renderFiles(projectId, files) {
+            const listContainer = document.getElementById(`file-list-${projectId}`);
+            listContainer.innerHTML = "";
+            
+            const viewBtn = document.getElementById(`view-report-${projectId}`);
+            
+            if (files.length === 0) {
+                listContainer.innerHTML = `<span class="no-files">Chưa có tệp đính kèm</span>`;
+                viewBtn.classList.remove("has-report");
+                return;
+            }
+            
+            viewBtn.classList.add("has-report");
+            
+            files.forEach(file => {
+                const fileTag = document.createElement("div");
+                fileTag.className = "file-tag";
+                
+                let displayName = file.name;
+                if (displayName.length > 20) {
+                    displayName = displayName.substring(0, 15) + "..." + displayName.split('.').pop();
+                }
+                
+                fileTag.innerHTML = `
+                    <span class="file-tag-name" onclick="openSingleFile(${projectId}, '${file.name}')" title="Bấm để mở file">${displayName}</span>
+                    <span class="file-tag-delete" onclick="deleteFileFromProject(${projectId}, '${file.name}')">&times;</span>
+                `;
+                listContainer.appendChild(fileTag);
+            });
+        }
+
+        async function renderAllAttachedFiles() {
+            for (let id = 1; id <= 6; id++) {
+                const files = await getProjectFiles(id);
+                renderFiles(id, files);
+            }
+        }
+
+        async function openSingleFile(projectId, fileName) {
+            const files = await getProjectFiles(projectId);
+            const file = files.find(f => f.name === fileName);
+            if (!file) return;
+            
+            try {
+                // Generate a temporary viewable URL for the Blob in IndexedDB
+                const url = URL.createObjectURL(file.data);
+                window.open(url, '_blank');
+            } catch (err) {
+                alert("Không thể hiển thị tệp tin này!");
+                console.error("Lỗi khi mở file:", err);
+            }
+        }
+
+        async function openReport(projectId) {
+            const files = await getProjectFiles(projectId);
+            if (files.length === 0) {
+                alert("Bạn chưa đính kèm báo cáo cho dự án này. Hãy bấm nút 'Đính kèm Báo cáo' màu xám phía dưới card để tải lên tệp tin (PDF, hình ảnh...) trước nhé!");
+                return;
+            }
+            
+            // Open the first uploaded report file by default
+            openSingleFile(projectId, files[0].name);
+        }
+    </script>
+</body>
+</html>
